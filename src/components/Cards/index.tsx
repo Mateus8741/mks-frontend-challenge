@@ -7,13 +7,14 @@ interface Props {
     brand: string
     description: string
     price: number
+    photo: string
   }
 }
 
 export default function Cards({ data }: Props) {
   return (
     <S.CardsContainer>
-      <img src="https://github.com/Mateus8741.png" alt="asda" />
+      <img src={data.photo} alt={data.name} />
       <S.Content>
         <h2>{data.name}</h2>
         <strong>R${data.price}</strong>
