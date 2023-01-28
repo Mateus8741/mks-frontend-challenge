@@ -1,10 +1,14 @@
 /* eslint-disable prettier/prettier */
 export const defaultTheme = {
-  white: '#FFF',
+  white: "#FFF",
 
-  'blue-300': '#0F52BA',
+  black: "#000000",
 
-  'gray-300': '#373737',
-  
-  'gray-400': '#2C2C2C',
-}
+  "white-300": "#EEEEEE",
+
+  "blue-300": "#0F52BA",
+
+  "gray-300": "#373737",
+
+  "gray-400": "#2C2C2C",
+};

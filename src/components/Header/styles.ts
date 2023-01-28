@@ -11,7 +11,7 @@ export const HeaderContainer = styled.div`
   top: 0;
   left: 0;
   z-index: 5;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
   background-color: ${(props) => props.theme['blue-300']};
 
   h1 {

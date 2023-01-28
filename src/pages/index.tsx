@@ -1,4 +1,5 @@
 import Cards from '@/components/Cards'
+import Sidebar from '@/components/Sidebar'
 import { StoreDTO } from '@/dtos/store'
 import { api } from '@/services/api'
 import { HomeContainer } from '@/styles/Home'
@@ -17,8 +18,7 @@ export default function Home() {
           orderBy: 'ASC',
         },
       })
-      console.log(response.data)
-      setData(response.data)
+      setData(response.data.products)
     } catch (error) {
       console.log(error)
     }
@@ -31,6 +31,7 @@ export default function Home() {
   return (
     <HomeContainer>
       <main>
+        <Sidebar active={true} />
         {data.map((item) => (
           <Cards key={item.id} data={item} />
         ))}
