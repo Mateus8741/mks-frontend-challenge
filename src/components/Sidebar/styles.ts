@@ -59,3 +59,18 @@ export const Content = styled.div`
   margin-top: 4.375rem;
   padding: 0 30px;
 `
+
+export const TotalContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: flex-end;
+  justify-content: space-between;
+  padding: 5rem 4rem;
+`
+
+export const Total = styled.h2`
+  color: ${({ theme }) => theme.white};
+  font-size: 1.75rem;
+  font-weight: 700;
+`

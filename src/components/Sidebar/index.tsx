@@ -5,6 +5,8 @@ import {
   Content,
   HeaderSidebar,
   SidebarTitle,
+  Total,
+  TotalContent,
 } from './styles'
 
 import { X } from 'phosphor-react'
@@ -23,7 +25,8 @@ const Sidebar = ({ active }: Props) => {
 
   const { handleCloseSidebar } = useCart()
 
-  const items = useSelector((state: RootState) => state.cart)
+  const items = useSelector((state: RootState) => state.cart.items)
+  const total = useSelector((state: RootState) => state.cart.total)
 
   function handleClose() {
     handleCloseSidebar()
@@ -47,6 +50,10 @@ const Sidebar = ({ active }: Props) => {
             <SidebarItem key={index} data={item as any} />
           ))}
       </Content>
+      <TotalContent>
+        <Total>Total:</Total>
+        {total ? <Total>R${total}</Total> : <Total>R$0</Total>}
+      </TotalContent>
     </Container>
   )
 }

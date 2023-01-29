@@ -10,7 +10,7 @@ import { RootState } from '@/redux/store'
 export default function Header() {
   const { handleOpenSidebar } = useCart()
 
-  const items = useSelector((state: RootState) => state.cart)
+  const items = useSelector((state: RootState) => state.cart.items)
 
   const quantity = items.length
 
