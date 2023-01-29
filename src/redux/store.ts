@@ -5,7 +5,7 @@ import { SidebarReducer } from './sliceOpenSidebar'
 export const store = configureStore({
   reducer: {
     sidebar: SidebarReducer,
-    counter: cartReducer,
+    cart: cartReducer,
   },
 })
 

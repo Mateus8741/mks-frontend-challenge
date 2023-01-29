@@ -11,6 +11,8 @@ import { X } from 'phosphor-react'
 import SidebarItem from '../SidebarCard'
 import { useTheme } from 'styled-components'
 import { useCart } from '@/hooks/useCart'
+import { RootState } from '@/redux/store'
+import { useSelector } from 'react-redux'
 
 interface Props {
   active: boolean
@@ -20,6 +22,8 @@ const Sidebar = ({ active }: Props) => {
   const colors = useTheme()
 
   const { handleCloseSidebar } = useCart()
+
+  const items = useSelector((state: RootState) => state.cart)
 
   function handleClose() {
     handleCloseSidebar()
@@ -38,16 +42,10 @@ const Sidebar = ({ active }: Props) => {
         </Circle>
       </HeaderSidebar>
       <Content>
-        <SidebarItem
-          productName="Home"
-          price={399}
-          productImage="https://github.com/Mateus8741.png"
-        />
-        <SidebarItem
-          productName="Apple Watch Series 4 GPS"
-          price={399}
-          productImage="https://github.com/Mateus8741.png"
-        />
+        {items &&
+          items.map((item, index) => (
+            <SidebarItem key={index} data={item as any} />
+          ))}
       </Content>
     </Container>
   )

@@ -1,4 +1,5 @@
-import { addToCart, removeFromCart } from '@/redux/counterCart'
+import { CardProps } from '@/components/Cards'
+import { addItem, removeItem } from '@/redux/counterCart'
 import { openSidebar, closeSidebar } from '@/redux/sliceOpenSidebar'
 import { createContext, ReactNode } from 'react'
 import { useDispatch } from 'react-redux'
@@ -6,7 +7,7 @@ import { useDispatch } from 'react-redux'
 export type CartContextProps = {
   handleOpenSidebar: () => void
   handleCloseSidebar: () => void
-  addItemToCart: (id: string) => void
+  addItemToCart: (id: CardProps) => void
   removeItemToCart: (id: string) => void
 }
 
@@ -28,12 +29,12 @@ export function CartContextProvider({ children }: ContextProps) {
     dispatch(closeSidebar())
   }
 
-  function addItemToCart(id: string) {
-    dispatch(addToCart(id))
+  function addItemToCart(item: CardProps) {
+    dispatch(addItem(item))
   }
 
-  function removeItemToCart(id: string) {
-    dispatch(removeFromCart(id))
+  function removeItemToCart(id: any) {
+    dispatch(removeItem(id))
   }
 
   const value = {

@@ -1,39 +1,49 @@
+import { useCart } from '@/hooks/useCart'
 import { X } from 'phosphor-react'
 import React from 'react'
 import { useTheme } from 'styled-components'
+import { CardProps } from '../Cards'
 import { Counter } from '../Counter'
 import { Circle, Container, Price, ProductName } from './styles'
 
-interface Props {
-  productName: string
-  price: number
-  productImage: string
-}
-
-const SidebarItem = ({ productName, price, productImage }: Props) => {
+const SidebarItem = ({ data }: CardProps) => {
   const colors = useTheme()
+
+  const { removeItemToCart } = useCart()
+
+  function handleRemoveToCart(id: string) {
+    removeItemToCart(id)
+  }
 
   return (
     <>
-      <Container>
-        <div>
-          <img
-            src={productImage}
-            alt="Imagem do produdo"
-            width={46}
-            height={57}
-          />
-          <ProductName>{productName}</ProductName>
-        </div>
+      {data && (
+        <>
+          <Container>
+            <div>
+              <img
+                src={data.photo}
+                alt="Imagem do produdo"
+                width={57}
+                height={57}
+              />
+              <ProductName>{data.name}</ProductName>
+            </div>
 
-        <div>
-          <Counter onDecrease={() => {}} quantity={1} onIncrease={() => {}} />
-          <Price>R${price}</Price>
-        </div>
-      </Container>
-      <Circle onClick={() => {}}>
-        <X size={10} weight="fill" onClick={() => {}} color={colors.white} />
-      </Circle>
+            <div>
+              <Counter
+                onDecrease={() => {}}
+                quantity={1}
+                onIncrease={() => {}}
+              />
+              <Price>R${data.price}</Price>
+            </div>
+          </Container>
+          <Circle onClick={() => handleRemoveToCart(data.id)}>
+            <X size={10} weight="fill" color={colors.white} />
+          </Circle>
+        </>
+      )}
     </>
   )
 }

@@ -26,14 +26,6 @@ export const HeaderContainer = styled.div`
     color: ${(props) => props.theme.white};
   }
 
-  span {
-    color: ${(props) => props.theme['gray-300']};
-    font-size: 1.125rem;
-    font-weight: 700;
-    margin-left: 0.9375rem;
-    margin-right: 1.0625rem;
-  }
-
   nav {
     display: flex;
 
@@ -45,10 +37,24 @@ export const HeaderContainer = styled.div`
 `
 
 export const Cart = styled.div`
+  width: fit-content;
   display: flex;
   background: ${(props) => props.theme.white};
-  padding: 0.5rem;
   border-radius: 6px;
   align-items: center;
   cursor: pointer;
+
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.5rem;
+
+    span {
+      color: ${(props) => props.theme['gray-300']};
+      font-size: 1.125rem;
+      font-weight: 700;
+    }
+  }
 `

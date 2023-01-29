@@ -16,8 +16,9 @@ export interface CardProps {
 export default function Cards({ data }: CardProps) {
   const { addItemToCart } = useCart()
 
-  function handleAddToCart(id: string) {
-    addItemToCart(id)
+  function handleAddToCart(data: CardProps) {
+    addItemToCart(data)
+    console.log(data)
   }
 
   return (
@@ -30,7 +31,7 @@ export default function Cards({ data }: CardProps) {
       <S.CardFooter>
         <p>{data.description}</p>
       </S.CardFooter>
-      <button onClick={() => handleAddToCart(data.id)}>
+      <button onClick={() => handleAddToCart(data as unknown as CardProps)}>
         <ShoppingBagOpen size={22} color="#FFF" />
         Comprar
       </button>

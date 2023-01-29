@@ -17,7 +17,6 @@ export const Container = styled.div`
 `
 
 export const ProductName = styled.h3`
-  max-width: 85px;
   word-break: break;
   font-size: 0.8125rem;
   font-weight: 400;
@@ -41,5 +40,5 @@ export const Circle = styled.button`
 
   position: relative;
   bottom: 8rem;
-  right: -25.2rem;
+  right: -29.8rem;
 `

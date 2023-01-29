@@ -4,13 +4,15 @@ import Logo from '@/assets/Logo.svg'
 import { ShoppingCartSimple } from 'phosphor-react'
 import Image from 'next/image'
 import { useCart } from '@/hooks/useCart'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/redux/store'
 
-interface Props {
-  onClick?: () => void
-}
-
-export default function Header({ onClick }: Props) {
+export default function Header() {
   const { handleOpenSidebar } = useCart()
+
+  const items = useSelector((state: RootState) => state.cart)
+
+  const quantity = items.length
 
   function handleOpenCloseModal() {
     handleOpenSidebar()
@@ -20,13 +22,12 @@ export default function Header({ onClick }: Props) {
     <S.HeaderContainer>
       <Image src={Logo} alt="" />
       <nav>
-        <button onClick={handleOpenCloseModal}>
-          <S.Cart>
+        <S.Cart onClick={handleOpenCloseModal}>
+          <div>
             <ShoppingCartSimple weight="fill" size={22} color="#000" />
-            <span>0</span>
-            {/* {cartQuantity > 0 && <span>{cartQuantity}</span>} */}
-          </S.Cart>
-        </button>
+            {quantity > 0 ? <span>{quantity}</span> : <span>0</span>}
+          </div>
+        </S.Cart>
       </nav>
     </S.HeaderContainer>
   )
