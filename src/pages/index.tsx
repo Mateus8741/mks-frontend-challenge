@@ -1,9 +1,11 @@
 import Cards from '@/components/Cards'
 import Sidebar from '@/components/Sidebar'
 import { StoreDTO } from '@/dtos/store'
+import { RootState } from '@/redux/store'
 import { api } from '@/services/api'
 import { HomeContainer } from '@/styles/Home'
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 export default function Home() {
   const [data, setData] = useState<StoreDTO[]>([])
@@ -24,6 +26,8 @@ export default function Home() {
     }
   }
 
+  const sidebarOpen = useSelector((state: RootState) => state.sidebar.open)
+
   useEffect(() => {
     fetchItens()
   }, [])
@@ -31,7 +35,7 @@ export default function Home() {
   return (
     <HomeContainer>
       <main>
-        <Sidebar active={true} />
+        <Sidebar active={sidebarOpen} />
         {data.map((item) => (
           <Cards key={item.id} data={item} />
         ))}

@@ -13,6 +13,7 @@ export const Container = styled.div<Props>`
   width: 30.375rem;
   right: ${(props) => (props.active ? '0' : '-100%')};
   animation: showSidebar 0.4s;
+  transition: all 0.4s;
   z-index: 6;
   box-shadow: -5px 0px 6px rgba(0, 0, 0, 0.13);
 
@@ -43,7 +44,7 @@ export const SidebarTitle = styled.h1`
   color: ${({ theme }) => theme.white};
 `
 
-export const Circle = styled.div`
+export const Circle = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,6 +52,7 @@ export const Circle = styled.div`
   height: 2.375rem;
   border-radius: 9999px;
   background-color: ${(props) => props.theme.black};
+  cursor: pointer;
 `
 
 export const Content = styled.div`

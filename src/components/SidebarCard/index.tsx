@@ -31,7 +31,7 @@ const SidebarItem = ({ productName, price, productImage }: Props) => {
           <Price>R${price}</Price>
         </div>
       </Container>
-      <Circle>
+      <Circle onClick={() => {}}>
         <X size={10} weight="fill" onClick={() => {}} color={colors.white} />
       </Circle>
     </>

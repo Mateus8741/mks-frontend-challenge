@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
   Circle,
   Container,
@@ -10,6 +10,7 @@ import {
 import { X } from 'phosphor-react'
 import SidebarItem from '../SidebarCard'
 import { useTheme } from 'styled-components'
+import { useCart } from '@/hooks/useCart'
 
 interface Props {
   active: boolean
@@ -18,10 +19,10 @@ interface Props {
 const Sidebar = ({ active }: Props) => {
   const colors = useTheme()
 
-  const [first, setfirst] = useState(false)
+  const { handleCloseSidebar } = useCart()
 
-  function closeSidebar() {
-    setfirst(!first)
+  function handleClose() {
+    handleCloseSidebar()
   }
 
   return (
@@ -32,13 +33,8 @@ const Sidebar = ({ active }: Props) => {
           <br />
           de compras
         </SidebarTitle>
-        <Circle>
-          <X
-            size={20}
-            weight="fill"
-            onClick={closeSidebar}
-            color={colors.white}
-          />
+        <Circle onClick={handleClose}>
+          <X size={20} weight="fill" color={colors.white} />
         </Circle>
       </HeaderSidebar>
       <Content>
